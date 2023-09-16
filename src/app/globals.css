@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+  .stats {
+      @apply  text-white p-4 flex-1 rounded-md border-[#004337] border-2
+
+  }
+  .stats-container {
+      @apply  p-5 rounded-lg border-[#004337] border
+  }
+
+  .countdown {
+      @apply p-8 text-5xl text-center text-white rounded-lg lg:min-w-[150px] 
+
+  }
+
+  .countdown-label {
+      @apply text-center text-white uppercase text-sm pt-4
+  }
+
+  .admin-button {
+    @apply bg-[$091F1C] p-2 flex-1 rounded-md border-[#004337] border-2 hover:bg-emerald-500/50
+  }
+
+  .bg-background {
+    background-image: url('https://video.wixstatic.com/video/11062b_cb0c4d13153f4008920bb26beda8de0f/480p/mp4/file.mp4');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@font-face {
+  font-family: 'TT';
+  src: url('/fonts/TTHoves-DemiBold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+body, h1, h2, h3, p, button {
+  font-family: 'TT', Arial, sans-serif;
+}
+
+.video-background {
+  position: relative;
+  overflow: hidden; /* To ensure video stays within bounds */
+  width: 100%;
+  height: 100vh; /* Change to desired height if not full screen */
+}
+
+.video-background video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  object-fit: cover; /* To ensure video covers the entire space */
+}
+
+.video-content {
+  position: relative; /* Content goes on top of the video */
+  z-index: 1;
+}
+}
+
