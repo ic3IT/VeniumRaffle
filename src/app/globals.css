@@ -44,6 +44,11 @@ body, h1, h2, h3, p, button {
   font-family: 'TT', Arial, sans-serif;
 }
 
+.no-select {
+  user-select: none;
+  cursor: default;
+}
+
 .video-background {
   position: relative;
   overflow: hidden; /* To ensure video stays within bounds */

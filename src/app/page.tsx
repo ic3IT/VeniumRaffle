@@ -123,7 +123,7 @@ const MainContent: NextPage = () => {
 
 
   return (
-    <div className="video-background">
+    <div className="video-background no-select">
     <video playsInline autoPlay muted loop>
       <source src="https://video.wixstatic.com/video/11062b_71b832b59b744d86bf0310d0fceb3055/480p/mp4/file.mp4" type="video/mp4" />
       Your browser does not support the video tag.

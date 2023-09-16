@@ -1,16 +1,32 @@
-import React from 'react'
+import React from 'react';
 import { PropagateLoader } from 'react-spinners';
 
 function Loading() {
   return (
-    <div className="bg-[#091B18] h-screen flex flex-col items-center justify-center">
-      <div className='flex items-center space-x-2 mb-10'>
-        <img className ="rounded-full h-20 w-20"src='https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg' alt="" />
-      <h1 className='text-lg text-white font-bold'>Loading Scrollium</h1>
+    <div className="relative h-screen flex flex-col items-center justify-center text-center">
+      
+      {/* Video Background */}
+      <video autoPlay loop muted className="absolute z-0 w-full h-full object-cover">
+        <source src="https://video.wixstatic.com/video/11062b_71b832b59b744d86bf0310d0fceb3055/480p/mp4/file.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Loading Content */}
+      <div className="z-10 relative flex flex-col items-center mb-10">
+        <img
+          className="rounded-full h-20 w-20 mb-10"
+          src="https://img.api.cryptorank.io/coins/scroll1693474620599.png"
+          alt=""
+        />
+        <h1 className="text-lg text-white font-bold">Loading Scrollium</h1>
+        <div style={{ marginTop: '20px', marginLeft: '-20px' }}>
+    <PropagateLoader color="white" size={30} />
+</div>
+
       </div>
-      <PropagateLoader color="white" size={30} />
+
     </div>
-  )
+  );
 }
 
-export default Loading
+export default Loading;
