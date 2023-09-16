@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Scrollium',
-  description: 'Scrollium: ',
+  description: 'Scrollium: Lottery',
 }
 
 export default function RootLayout({
