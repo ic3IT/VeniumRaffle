@@ -22,7 +22,7 @@ function CountdownTimer() {
         if (completed) {
             return (
                 <div>
-                    <h2 className='text-white text-xl text-center animate-bounce'>Ticket Sales Are now CLOSED for this draw</h2>
+                    <h2 className='text-white text-xl text-center animate-bounce'>Ticket Sales Reset, Buy For The Next Draw</h2>
                 <div>
                     <div className='flex space-x-6'>          
                         <div className='flex-1'>
