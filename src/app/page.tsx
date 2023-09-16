@@ -234,8 +234,9 @@ const MainContent: NextPage = () => {
               </div>
             </div>
             <button 
-            disabled={expiration?.toString() < Date.now().toString()
-            || remainingTickets?.toNumber() === 0}
+            
+
+
             onClick={handleClick}
             className='mt-5 w-full bg-gradient-to-br from-emerald-200 
             to-emerald-600 px-10 font-semibold py-5 rounded-md text-gray 
