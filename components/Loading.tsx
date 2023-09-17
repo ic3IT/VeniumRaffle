@@ -18,7 +18,7 @@ function Loading() {
           src="https://img.api.cryptorank.io/coins/scroll1693474620599.png"
           alt=""
         />
-        <h1 className="text-lg text-white font-bold">Loading Scrollium</h1>
+        <h1 className="text-lg text-white font-bold">Loading Scrollium: Raffle</h1>
         <div style={{ marginTop: '20px', marginLeft: '-20px' }}>
     <PropagateLoader color="white" size={30} />
 </div>
