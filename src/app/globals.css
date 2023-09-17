@@ -34,7 +34,7 @@
 
 @font-face {
   font-family: 'Alx';
-  src: url('/fonts/Alx.ttf') format('truetype');
+  src: url('/fonts/conthrax-sb.otf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -45,7 +45,7 @@
 
 @font-face {
   font-family: 'TT';
-  src: url('/fonts/TTHoves-DemiBold.woff') format('woff');
+  src: url('/fonts/conthrax-sb.otf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

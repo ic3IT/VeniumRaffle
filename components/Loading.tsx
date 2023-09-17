@@ -7,7 +7,7 @@ function Loading() {
       
       {/* Video Background */}
       <video autoPlay loop muted className="absolute z-0 w-full h-full object-cover">
-        <source src="https://video.wixstatic.com/video/11062b_71b832b59b744d86bf0310d0fceb3055/480p/mp4/file.mp4" type="video/mp4" />
+        <source src="./scrolliumbg.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
