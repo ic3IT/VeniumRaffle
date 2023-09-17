@@ -233,11 +233,7 @@ const MainContent: NextPage = () => {
                 <p>TBC</p>
               </div>
             </div>
-            <button 
-            disabled={expiration?.toString() < Date.now().toString()
-            || remainingTickets?.toNumber() === 0}
-
-            
+            <button       
             onClick={handleClick}
             className='mt-5 w-full bg-gradient-to-br from-emerald-200 
             to-emerald-600 px-10 font-semibold py-5 rounded-md text-gray 
