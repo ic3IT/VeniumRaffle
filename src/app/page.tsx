@@ -20,7 +20,6 @@ const Home: NextPage = () => {
     <ThirdwebProvider activeChain={ ScrollSepoliaTestnet } clientId='1e11f5ed7379e8b2e3305a4bf4ebe2db'> 
     <Toaster />
         <Head>
-          <link rel="icon" href="./favicon.ico" sizes="64x64" type="image/x-icon"/>
           <title>Scrollium Draw</title>
         </Head>
 
@@ -126,7 +125,7 @@ const MainContent: NextPage = () => {
   return (
     <div className="video-background no-select">
     <video playsInline autoPlay muted loop>
-      <source src="./scrolliumbg.mp4" type="video/mp4" />
+      <source src="https://video.wixstatic.com/video/11062b_71b832b59b744d86bf0310d0fceb3055/480p/mp4/file.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
     <div className="video-content">

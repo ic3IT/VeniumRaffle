@@ -13,7 +13,7 @@ function Login() {
     <div className="relative min-h-screen flex flex-col items-center justify-center text-center no-select">
       
       <video autoPlay loop muted className="absolute z-0 w-full h-full object-cover">
-        <source src="./scrolliumbg.mp4" type="video/mp4" />
+        <source src="https://video.wixstatic.com/video/11062b_71b832b59b744d86bf0310d0fceb3055/480p/mp4/file.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
@@ -23,7 +23,7 @@ function Login() {
           src="./logo.png"
           alt=""
         />
-        <h1 className="special-section text-3xl text-white font-bold no-select mt-3 mb-2 items-center justify-center">SCROLLIUM: RAFFLE</h1>
+        <h1 className="special-section text-5xl text-white font-bold no-select mb-2 items-center justify-center">SCROLLIUM: RAFFLE</h1>
         <h2 className="text-white no-select items-center justify-center">Get started by logging in with your Metamask</h2>
         <button
           onClick={handleLoginClick}
