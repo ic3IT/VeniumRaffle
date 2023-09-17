@@ -44,7 +44,7 @@ function Header() {
             <div className='flex items-center space-x-2'>
                 <img 
                 className="rounded-full h-10 w-10" 
-                src="https://img.api.cryptorank.io/coins/scroll1693474620599.png" 
+                src="./logo.png" 
                 alt="" />
             <div>
                 <h1 className="text-lg text-white font-bold">Scrollium</h1>

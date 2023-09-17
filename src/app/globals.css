@@ -33,6 +33,17 @@
 }
 
 @font-face {
+  font-family: 'Alx';
+  src: url('/fonts/Alx.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.special-section {
+  font-family: 'Alx', Arial, sans-serif;
+}
+
+@font-face {
   font-family: 'TT';
   src: url('/fonts/TTHoves-DemiBold.woff') format('woff');
   font-weight: normal;

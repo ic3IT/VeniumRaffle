@@ -19,15 +19,15 @@ function Login() {
 
       <div className="z-10 relative flex flex-col items-center mb-10">
         <img
-          className="rounded-full h-56 w-56 mb-10"
-          src="https://img.api.cryptorank.io/coins/scroll1693474620599.png"
+          className="rounded-full h-56 w-56 items-center -mb-10 justify-center"
+          src="./logo.png"
           alt=""
         />
-        <h1 className="text-6xl text-white font-bold no-select mb-2">SCROLLIUM</h1>
-        <h2 className="text-white no-select">Get started by logging in with your Metamask</h2>
+        <h1 className="special-section text-6xl text-white font-bold no-select mb-1 items-center justify-center">SCROLLIUM: RAFFLE</h1>
+        <h2 className="text-white no-select items-center justify-center">Get started by logging in with your Metamask</h2>
         <button
           onClick={handleLoginClick}
-          className="bg-white px-8 py-5 mt-10 rounded-lg shadow-lg font-bold"
+          className="bg-white px-8 py-5 mt-10 rounded-lg shadow-lg font-bold mb-10"
         >
           Login with Metamask
         </button>

@@ -14,8 +14,8 @@ function Loading() {
       {/* Loading Content */}
       <div className="z-10 relative flex flex-col items-center mb-10">
         <img
-          className="rounded-full h-20 w-20 mb-10"
-          src="https://img.api.cryptorank.io/coins/scroll1693474620599.png"
+          className="rounded-full h-20 w-20 pl-3 justify-center items-center"
+          src="./logo.png"
           alt=""
         />
         <h1 className="text-lg text-white font-bold">Loading Scrollium: Raffle</h1>
