@@ -5,8 +5,8 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Scrollium',
-  description: 'Scrollium: Lottery',
+  title: 'Scrollium: Raffle',
+  description: 'Scrollium: Raffle',
   icons: {
     icon: '/logo.png',
   },
