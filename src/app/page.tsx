@@ -78,6 +78,14 @@ const MainContent: NextPage = () => {
     };
   }, []);
 
+  useEffect(() => {
+		const videos = document.querySelectorAll('video');
+		videos.forEach(video => {
+			video.muted = true;
+			video.play();
+		});
+	}, []);
+
   const handleClick = async () => {
     if (!ticketPrice) return;
 
@@ -124,7 +132,7 @@ const MainContent: NextPage = () => {
 
   return (
     <div className="video-background no-select">
-    <video playsInline autoPlay muted loop>
+    <video autoPlay loop muted playsInline>
       <source src="https://video.wixstatic.com/video/11062b_71b832b59b744d86bf0310d0fceb3055/480p/mp4/file.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
