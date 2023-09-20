@@ -9,14 +9,25 @@ const METAMASK_DEEPLINK = "https://metamask.app.link/dapp/scrollium.vercel.app/"
 function Login() {
   const [isMetaMaskInstalled, setIsMetaMaskInstalled] = useState(false);
   const connectWithMetamask = useMetamask();
+  const desiredNetwork = {
+    chainId: '0x8274F',
+    chainName: 'Scroll Alpha Testnet',
+    nativeCurrency: {
+      name: 'ETH',
+      symbol: 'ETH',
+      decimals: 18
+    },
+    rpcUrls: ['https://sepolia-rpc.scroll.io'],
+    blockExplorerUrls: ['https://sepolia-blockscout.scroll.io']
+  };
 
   useEffect(() => {
-		const videos = document.querySelectorAll('video');
-		videos.forEach(video => {
-			video.muted = true;
-			video.play();
-		});
-	}, []);
+    const videos = document.querySelectorAll('video');
+    videos.forEach(video => {
+      video.muted = true;
+      video.play();
+    });
+  }, []);
 
   useEffect(() => {
     const checkInstallation = async () => {
@@ -24,22 +35,22 @@ function Login() {
       setIsMetaMaskInstalled(!!provider);
     };
 
-    if (window.ethereum) {
-      handleEthereum();
-    } else {
-      window.addEventListener('ethereum#initialized', handleEthereum, { once: true });
-      setTimeout(handleEthereum, 3000);
-    }
-
     checkInstallation();
   }, []);
 
-  function handleEthereum() {
-    const { ethereum } = window;
-    if (ethereum && ethereum.isMetaMask) {
-      console.log('Ethereum successfully detected!');
-    } else {
-      console.log('Please install MetaMask!');
+  interface EthereumProvider {
+    request: (args: any) => Promise<any>;
+  }
+
+  async function requestNetworkSwitch(provider: EthereumProvider) {
+    try {
+      await provider.request({
+        method: 'wallet_addEthereumChain',
+        params: [desiredNetwork],
+      });
+    } catch (switchError) {
+      console.error(switchError);
+      // Handle the error, maybe alert the user they need to switch manually or the network details are wrong
     }
   }
 
@@ -47,15 +58,24 @@ function Login() {
     e.preventDefault();
 
     if (!isMetaMaskInstalled) {
-      // Redirect user to MetaMask using deeplink or instruct them to install
       window.open(METAMASK_DEEPLINK, '_blank');
-      console.log("MetaMask not installed. Showing toast...");
       toast.error('MetaMask is not installed!');
       return;
     }
 
-    connectWithMetamask();
+    const { ethereum } = window;
+    if (ethereum && ethereum.isMetaMask) {
+      if (ethereum.chainId !== desiredNetwork.chainId) {
+        await requestNetworkSwitch(ethereum);
+      }
+      // After ensuring the correct network or prompting to switch, proceed to connect with MetaMask
+      connectWithMetamask();
+    } else {
+      console.log('Please install MetaMask!');
+    }
   };
+  
+  
 
   return (
     
