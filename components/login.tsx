@@ -89,7 +89,8 @@ function Login() {
         <img className="rounded-full h-56 w-56 items-center -mb-10 justify-center" src="./logo.png" alt="" />
         <h1 className="special-section text-5xl text-white font-bold no-select mb-2 items-center justify-center">SCROLLIUM: RAFFLE</h1>
         <h2 className="text-white no-select items-center justify-center">Get started by logging in with your Metamask</h2>
-        <button onClick={handleLoginClick} className="bg-white px-8 py-5 mt-5 rounded-lg shadow-lg font-bold mb-10">
+        <button onClick={handleLoginClick} className="flex gap-3 bg-white px-8 py-4 mt-3 rounded-xl shadow-lg font-bold mb-10">
+        <img src="metamask.svg" alt="metamask" className="h-6 w-6" />
           {isMetaMaskInstalled ? 'Login with Metamask' : 'Install Metamask'}
         </button>
       </div>
