@@ -2,7 +2,7 @@
 import type { NextPage } from 'next';
 import Head from "next/head";
 import Header from "../../components/Header";
-import { useContractRead, useContract,useContractWrite, useAddress, ThirdwebProvider, ChainId, } from "@thirdweb-dev/react";
+import { useContractRead, useContract,useContractWrite, useAddress, ThirdwebProvider, ChainId, useNetworkMismatch, useNetwork, useSwitchChain } from "@thirdweb-dev/react";
 import { ScrollSepoliaTestnet } from "@thirdweb-dev/chains";
 import Login from "../../components/login";
 import Loading from "../../components/Loading";
@@ -14,6 +14,25 @@ import toast, { Toaster } from 'react-hot-toast';
 import { currency } from '../../constants';
 import Marquee from 'react-fast-marquee';
 import AdminControls from '../../components/AdminControls';
+import {
+  getDefaultWallets,
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit';
+import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import {
+  mainnet,
+  polygon,
+  optimism,
+  arbitrum,
+  base,
+  zora,
+} from 'wagmi/chains';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
+
+
+
+
 
 const Home: NextPage = () => {
   return (
@@ -33,6 +52,7 @@ const MainContent: NextPage = () => {
     process.env.NEXT_PUBLIC_LOTTERY_CONTRACT_ADDRESS
   );
   const [userTickets, setUserTickets] = useState(0);
+  const networkMismatch = useNetworkMismatch()
   const address = useAddress();
   const [quantity, setQuantity] = useState<number>(1);
   const { data: remainingTickets } = useContractRead(contract, "RemainingTickets")
@@ -48,6 +68,21 @@ const MainContent: NextPage = () => {
   const {data: lastWinnerAmount } = useContractRead(contract, "lastWinnerAmount")
   const {data: lastWinner } = useContractRead(contract, "lastWinner")
   const {data: isLotteyOperator } = useContractRead(contract, 'lotteryOperator');
+  const ScrollSepolia = '0x82751';
+  const [, switchNetwork] = useNetwork(); // Switch to desired chain
+  const isMismatched = useNetworkMismatch(); // Detect if user is connected to the wrong network
+  const switchChain = useSwitchChain();
+  const desiredNetwork = {
+    chainId: '0x8274F',
+    chainName: 'Scroll Alpha Testnet',
+    nativeCurrency: {
+      name: 'ETH',
+      symbol: 'ETH',
+      decimals: 18
+    },
+    rpcUrls: ['https://sepolia-rpc.scroll.io'],
+    blockExplorerUrls: ['https://sepolia-blockscout.scroll.io']
+  };
   
   const onWithdrawWinnings = async () => {
       const notification = toast.loading("Withdraw Winnings...")
@@ -86,32 +121,70 @@ const MainContent: NextPage = () => {
 		});
 	}, []);
 
-  const handleClick = async () => {
-    if (!ticketPrice) return;
-
-    const notification = toast.loading("Buying your tickets...");
+  interface EthereumProvider {
+    request: (args: any) => Promise<any>;
+  }
+  
+  async function requestNetworkSwitch(provider: EthereumProvider): Promise<boolean> {
     try {
-      const data = await BuyTickets({
-        overrides: {
-            value: ethers.utils.parseEther(
-                (Number(ethers.utils.formatEther(ticketPrice)) * quantity).toString()
-            )
-        }
+      await provider.request({
+        method: 'wallet_addEthereumChain',
+        params: [desiredNetwork],
       });
-
-      toast.success("Tickets purchased successfully!", {
-        id: notification
-      });
-
-      console.info("Contract call success,", data);
-    
-    } catch(err) {
-      toast.error("Whoops something went wrong!", {
-        id: notification
-      });
-      console.error("Error buying tickets:", err);
+      return true;
+    } catch (switchError) {
+      console.error(switchError);
+      // Notify the user they need to switch manually or the network details are wrong
+      toast.error('Failed to switch networks. Please switch to the desired network manually.');
+      return false;
     }
   }
+
+  const handleSwitch = () => {
+    switchChain(ScrollSepoliaTestnet.chainId);
+  };
+  
+  const handleClick = async () => {
+    // Switch chains first if there's a network mismatch
+    if (networkMismatch) {
+        await handleSwitch();
+    }
+  
+    // If user is now on the correct network, proceed
+    if (!networkMismatch) {
+        if (!ticketPrice) return;
+      
+        // Buy tickets
+        const notification = toast.loading("Buying your tickets...");
+      
+        try {
+            const data = await BuyTickets({
+                overrides: {
+                    value: ethers.utils.parseEther(
+                        (Number(ethers.utils.formatEther(ticketPrice)) * quantity).toString()
+                    )
+                }
+            });
+      
+            toast.success("Tickets purchased successfully!", {
+                id: notification
+            });
+      
+            console.info("Contract call success,", data);
+      
+        } catch (err) {
+            toast.error("Whoops something went wrong!", {
+                id: notification
+            });
+            console.error("Error buying tickets:", err);
+        }
+    }
+}
+
+  
+  
+  
+
 
   useEffect(() => {
     if (!tickets) return;
@@ -242,7 +315,7 @@ const MainContent: NextPage = () => {
               </div>
             </div>
             <button       
-            onClick={handleClick}
+            onClick= {handleClick}
             className='mt-5 w-full bg-gradient-to-br from-emerald-200 
             to-emerald-600 px-10 font-semibold py-5 rounded-md text-gray 
             shadow-xl disabled:from-gray-600 disabled:text-gray-100 disabled:to-gray-600 disabled:cursor-not-allowed'>
@@ -251,8 +324,7 @@ const MainContent: NextPage = () => {
               Number(ethers.utils.formatEther(ticketPrice.toString()))
                * quantity}{" "}
                {currency}
-              </button>
-              <Toaster />  
+              </button> 
           </div>
               
             {userTickets > 0 && (<div className='stats'>

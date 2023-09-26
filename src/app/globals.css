@@ -84,5 +84,19 @@ body, h1, h2, h3, p, button {
   position: relative; /* Content goes on top of the video */
   z-index: 1;
 }
+.MenuButton {
+  display: flex;
+  gap: 0.75rem;
+  background-color: white;
+  padding: 1rem 2rem;
+  margin-top: 0.75rem;
+  margin-bottom: 2.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  font-weight: bold;
 }
+
+
+}
+
 
