@@ -33,7 +33,6 @@ import { publicProvider } from 'wagmi/providers/public';
 
 
 
-
 const Home: NextPage = () => {
   return (
     <ThirdwebProvider activeChain={ ScrollSepoliaTestnet } clientId='1e11f5ed7379e8b2e3305a4bf4ebe2db'> 
@@ -181,10 +180,15 @@ const MainContent: NextPage = () => {
     }
 }
 
-  
-  
-  
 
+  
+function DisplayPrice({ quantity, ticketPrice }: { quantity: number; ticketPrice: any }) {
+  const priceInEther = ticketPrice && ethers.utils.formatEther(ticketPrice.toString());
+  const totalPrice = (priceInEther * quantity).toFixed(3);  // Rounds to 3 decimal places
+  return <>{totalPrice}</>;
+}
+
+  
 
   useEffect(() => {
     if (!tickets) return;
@@ -300,8 +304,7 @@ const MainContent: NextPage = () => {
             <div className='space-y-2 mt-5'>
               <div className='flex item-center justify-between text-emerald-300 text-xs italic font-extrabold'>
                <p>Total cost of tickets</p>
-               <p>{ticketPrice && Number(ethers.utils.formatEther
-              (ticketPrice.toString())) * quantity}{" "}</p>
+               <p><DisplayPrice ticketPrice={ticketPrice} quantity={quantity} /></p>
               </div>
               <div className='flex item-center justify-between text-emerald-300 text-xs italic'>
                 <p>Service Fees</p>
@@ -320,10 +323,7 @@ const MainContent: NextPage = () => {
             to-emerald-600 px-10 font-semibold py-5 rounded-md text-gray 
             shadow-xl disabled:from-gray-600 disabled:text-gray-100 disabled:to-gray-600 disabled:cursor-not-allowed'>
              
-              Buy {quantity} Tickets for {ticketPrice && 
-              Number(ethers.utils.formatEther(ticketPrice.toString()))
-               * quantity}{" "}
-               {currency}
+             Buy {quantity} Tickets for <DisplayPrice quantity={quantity} ticketPrice={ticketPrice} /> {currency}
               </button> 
           </div>
               
