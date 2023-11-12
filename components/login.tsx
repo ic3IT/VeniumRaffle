@@ -103,7 +103,7 @@ function Login() {
   
       <div className="z-10 relative flex flex-col items-center mb-10">
         <img className="rounded-full h-56 w-56 items-center -mb-10 justify-center" src="./logo.png" alt="" />
-        <h1 className="special-section text-5xl text-white font-bold no-select mb-2 items-center justify-center">SCROLLIUM: RAFFLE</h1>
+        <h1 className="special-section text-6xl text-white font-bold no-select mb-2 items-center justify-center">VENIUM: RAFFLE</h1>
         <h2 className="text-white no-select items-center justify-center">Get started by logging in with your Wallet</h2>
         <div><br></br></div>
         <div style={{ display: 'flex', alignItems: 'center' }}>

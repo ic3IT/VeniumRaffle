@@ -28,7 +28,7 @@ function Loading() {
           src="./logo.png"
           alt=""
         />
-        <h1 className="text-lg text-white font-bold">Loading Scrollium: Raffle</h1>
+        <h1 className="text-lg text-white font-bold">Loading Venium: Raffle</h1>
         <div style={{ marginTop: '20px', marginLeft: '-20px' }}>
     <PropagateLoader color="white" size={30} />
 </div>

@@ -47,7 +47,7 @@ function Header() {
                 src="./logo.png" 
                 alt="" />
             <div>
-                <h1 className="text-lg text-white font-bold">Scrollium</h1>
+                <h1 className="text-lg text-white font-bold">Venium</h1>
                 <p className="text-xs text-emerald-500 truncate">User: {address?.substring(0,5)}...{address?.substring(address.length, address.length -5)} </p>
             </div>
         </div>

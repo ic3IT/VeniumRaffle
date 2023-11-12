@@ -38,7 +38,7 @@ const Home: NextPage = () => {
     <ThirdwebProvider activeChain={ ScrollSepoliaTestnet } clientId='1e11f5ed7379e8b2e3305a4bf4ebe2db'> 
     <Toaster />
         <Head>
-          <title>Scrollium Draw</title>
+          <title>Venium Draw</title>
         </Head>
 
         <MainContent />
