@@ -4,6 +4,7 @@ import Head from "next/head";
 import Header from "../../components/Header";
 import { useContractRead, useContract,useContractWrite, useAddress, ThirdwebProvider, ChainId, useNetworkMismatch, useNetwork, useSwitchChain } from "@thirdweb-dev/react";
 import { ScrollSepoliaTestnet } from "@thirdweb-dev/chains";
+// import { ScrollMainNet } from "@thirdweb-dev/chains"
 import Login from "../../components/login";
 import Loading from "../../components/Loading";
 import { useEffect, useState } from 'react';
@@ -35,7 +36,27 @@ import { publicProvider } from 'wagmi/providers/public';
 
 const Home: NextPage = () => {
   return (
-    <ThirdwebProvider activeChain={ ScrollSepoliaTestnet } clientId='1e11f5ed7379e8b2e3305a4bf4ebe2db'> 
+    <ThirdwebProvider 
+    activeChain={{
+      // === Required information for connecting to the network === \\
+      chainId: 534352, // Chain ID of the network
+      // Array of RPC URLs to use
+      rpc: ["https://scroll.rpc.thirdweb.com"],
+
+      // === Information for adding the network to your wallet (how it will appear for first time users) === \\
+      // Information about the chain's native currency (i.e. the currency that is used to pay for gas)
+      nativeCurrency: {
+        decimals: 18,
+        name: "ETH",
+        symbol: "ETH",
+      },
+      shortName: "Scroll", // Display value shown in the wallet UI
+      slug: "Scroll", // Display value shown in the wallet UI
+      testnet: false, // Boolean indicating whether the chain is a testnet or mainnet
+      chain: "Scroll", // Name of the network
+      name: "Scroll", // Name of the network
+    }}
+    clientId='1e11f5ed7379e8b2e3305a4bf4ebe2db'> 
     <Toaster />
         <Head>
           <title>Venium Draw</title>
@@ -72,15 +93,15 @@ const MainContent: NextPage = () => {
   const isMismatched = useNetworkMismatch(); // Detect if user is connected to the wrong network
   const switchChain = useSwitchChain();
   const desiredNetwork = {
-    chainId: '0x8274F',
-    chainName: 'Scroll Alpha Testnet',
+    chainId: '0x82750',
+    chainName: 'Scroll',
     nativeCurrency: {
       name: 'ETH',
       symbol: 'ETH',
       decimals: 18
     },
-    rpcUrls: ['https://sepolia-rpc.scroll.io'],
-    blockExplorerUrls: ['https://sepolia-blockscout.scroll.io']
+    rpcUrls: ['https://scroll-mainnet.chainstacklabs.com'],
+    blockExplorerUrls: ['https://scrollscan.com']
   };
   
   const onWithdrawWinnings = async () => {
@@ -140,7 +161,7 @@ const MainContent: NextPage = () => {
   }
 
   const handleSwitch = () => {
-    switchChain(ScrollSepoliaTestnet.chainId);
+    switchChain(534352);
   };
   
   const handleClick = async () => {
