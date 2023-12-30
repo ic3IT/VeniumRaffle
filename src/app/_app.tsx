@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps}: AppProps) {
   return (
     <ThirdwebProvider 
       activeChain={ "mumbai" } 
-      clientId="233e50dd03d1bcbce6f1cfc81463f968" // You can get a client id from dashboard settings
+      clientId="af2244b6c87013b482b91b5ea1f21173" // You can get a client id from dashboard settings
     >
       <Component {...pageProps}/>
     </ThirdwebProvider>

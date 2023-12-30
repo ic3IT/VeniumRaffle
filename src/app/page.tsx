@@ -56,7 +56,7 @@ const Home: NextPage = () => {
       chain: "Scroll", // Name of the network
       name: "Scroll", // Name of the network
     }}
-    clientId='1e11f5ed7379e8b2e3305a4bf4ebe2db'> 
+    clientId='af2244b6c87013b482b91b5ea1f21173'> 
     <Toaster />
         <Head>
           <title>Venium Draw</title>
@@ -224,7 +224,7 @@ function DisplayPrice({ quantity, ticketPrice }: { quantity: number; ticketPrice
 }, [tickets, address]);
 
   if (!hasMinLoadTimePassed) return <Loading />;
-  if (isLoading) return <Loading />; 
+  // if (isLoading) return <Loading />; 
   if (!address) return <Login />;
 
 
