@@ -328,10 +328,7 @@ function DisplayPrice({ quantity, ticketPrice }: { quantity: number; ticketPrice
                <p><DisplayPrice ticketPrice={ticketPrice} quantity={quantity} /></p>
               </div>
               <div className='flex item-center justify-between text-emerald-300 text-xs italic'>
-                <p>Service Fees</p>
-                <p>{ticketCommision && ethers.utils.formatEther
-              (ticketCommision.toString())}{" "}
-              ETH</p>
+
               </div>
               <div className='flex item-center justify-between text-emerald-300 text-xs italic'>
                 <p>+ Network Fees</p>
