@@ -21,14 +21,14 @@ function Login() {
   const [isMetaMaskInstalled, setIsMetaMaskInstalled] = useState(false);
   const connectWithMetamask = useMetamask();
   const desiredNetwork = {
-    chainId: '0x82750',
+    chainId: '0x8274f',
     chainName: 'Scroll',
     nativeCurrency: {
       name: 'ETH',
       symbol: 'ETH',
       decimals: 18
     },
-    rpcUrls: ['https://scroll-mainnet.chainstacklabs.com'],
+    rpcUrls: ['https://rpc.ankr.com/scroll_sepolia_testnet'],
     blockExplorerUrls: ['https://scrollscan.com']
   };
 

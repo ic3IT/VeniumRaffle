@@ -39,9 +39,9 @@ const Home: NextPage = () => {
     <ThirdwebProvider 
     activeChain={{
       // === Required information for connecting to the network === \\
-      chainId: 534352, // Chain ID of the network
+      chainId: 534351, // Chain ID of the network
       // Array of RPC URLs to use
-      rpc: ["https://scroll.rpc.thirdweb.com"],
+      rpc: ["https://scroll-sepolia.chainstacklabs.com	"],
 
       // === Information for adding the network to your wallet (how it will appear for first time users) === \\
       // Information about the chain's native currency (i.e. the currency that is used to pay for gas)
@@ -328,11 +328,12 @@ function DisplayPrice({ quantity, ticketPrice }: { quantity: number; ticketPrice
                <p><DisplayPrice ticketPrice={ticketPrice} quantity={quantity} /></p>
               </div>
               <div className='flex item-center justify-between text-emerald-300 text-xs italic'>
-
+                <p>+ Service Fees</p>
+                {/* <p>0.00003 ETH</p> */}
               </div>
               <div className='flex item-center justify-between text-emerald-300 text-xs italic'>
                 <p>+ Network Fees</p>
-                <p>TBC</p>
+                {/* <p>TBC</p> */}
               </div>
             </div>
             <button       
