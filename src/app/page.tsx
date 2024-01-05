@@ -41,7 +41,7 @@ const Home: NextPage = () => {
       // === Required information for connecting to the network === \\
       chainId: 534351, // Chain ID of the network
       // Array of RPC URLs to use
-      rpc: ["https://scroll-sepolia.chainstacklabs.com	"],
+      rpc: ["https://sepolia-rpc.scroll.io"],
 
       // === Information for adding the network to your wallet (how it will appear for first time users) === \\
       // Information about the chain's native currency (i.e. the currency that is used to pay for gas)
@@ -50,11 +50,11 @@ const Home: NextPage = () => {
         name: "ETH",
         symbol: "ETH",
       },
-      shortName: "Scroll", // Display value shown in the wallet UI
-      slug: "Scroll", // Display value shown in the wallet UI
-      testnet: false, // Boolean indicating whether the chain is a testnet or mainnet
-      chain: "Scroll", // Name of the network
-      name: "Scroll", // Name of the network
+      shortName: "Scroll Testnet", // Display value shown in the wallet UI
+      slug: "Scroll Testnet", // Display value shown in the wallet UI
+      testnet: true, // Boolean indicating whether the chain is a testnet or mainnet
+      chain: "Scroll Testnet", // Name of the network
+      name: "Scroll Testnet", // Name of the network
     }}
     clientId='af2244b6c87013b482b91b5ea1f21173'> 
     <Toaster />
@@ -93,14 +93,14 @@ const MainContent: NextPage = () => {
   const isMismatched = useNetworkMismatch(); // Detect if user is connected to the wrong network
   const switchChain = useSwitchChain();
   const desiredNetwork = {
-    chainId: '0x82750',
+    chainId: '0x8274f',
     chainName: 'Scroll',
     nativeCurrency: {
       name: 'ETH',
       symbol: 'ETH',
       decimals: 18
     },
-    rpcUrls: ['https://scroll-mainnet.chainstacklabs.com'],
+    rpcUrls: ['https://sepolia-rpc.scroll.io'],
     blockExplorerUrls: ['https://scrollscan.com']
   };
   
@@ -161,7 +161,7 @@ const MainContent: NextPage = () => {
   }
 
   const handleSwitch = () => {
-    switchChain(534352);
+    switchChain(534351);
   };
   
   const handleClick = async () => {
