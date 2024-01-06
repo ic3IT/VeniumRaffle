@@ -56,7 +56,7 @@ const Home: NextPage = () => {
       chain: "Scroll Testnet", // Name of the network
       name: "Scroll Testnet", // Name of the network
     }}
-    clientId='af2244b6c87013b482b91b5ea1f21173'> 
+    clientId='24d96df2b5c769b8acb15d27f1df6143'> 
     <Toaster />
         <Head>
           <title>Venium Draw</title>
@@ -310,7 +310,7 @@ function DisplayPrice({ quantity, ticketPrice }: { quantity: number; ticketPrice
   className='flex w-full bg-transparent text-right outline-none' 
   type='Number'
   min={1}
-  max={10}
+  max={10 - userTickets}
   value={quantity}
   onChange= {e => {
     const inputValue = Number(e.target.value);
@@ -323,6 +323,11 @@ function DisplayPrice({ quantity, ticketPrice }: { quantity: number; ticketPrice
 />
             </div>
             <div className='space-y-2 mt-5'>
+            <div className='flex item-center justify-between text-emerald-300 text-xs italic font-extrabold'>
+               <p>Max tickets</p>
+               <p>{10 - userTickets}</p>
+              </div>
+              <br></br>
               <div className='flex item-center justify-between text-emerald-300 text-xs italic font-extrabold'>
                <p>Total cost of tickets</p>
                <p><DisplayPrice ticketPrice={ticketPrice} quantity={quantity} /></p>
